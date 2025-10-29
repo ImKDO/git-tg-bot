@@ -13,6 +13,5 @@ class Settings(BaseSettings):
     )
 
 
-# Создаем единственный экземпляр настроек
 settings = Settings()
 
