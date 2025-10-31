@@ -6,9 +6,10 @@ from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 
-from bot.config import settings
-from bot.handlers import start, add
-from bot.handlers.commands import COMMANDS
+from src.common.kafka import get_producer
+from src.config import settings
+from src.handlers import start, add
+from src.handlers.commands import COMMANDS
 
 
 logging.basicConfig(
@@ -20,11 +21,18 @@ logger = logging.getLogger(__name__)
 
 async def main() -> None:
     bot = Bot(
-        token=settings.bot_token,
+        token=settings.BOT_TOKEN,
         default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
 
     dp = Dispatcher()
+
+    producer = await get_producer()
+    
+    dp["producer"] = producer
+    
+    dp.startup.register(producer.start)
+    dp.shutdown.register(producer.stop)
 
     dp.include_router(start.router)
     dp.include_router(add.router)

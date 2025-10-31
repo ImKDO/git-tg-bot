@@ -15,8 +15,8 @@ async def cmd_start(msg: Message) -> None:
   )
 
 @router.message(Command("help"))
-async def cmd_help(msg: Message, bot: Bot) -> None:
-  commands = await bot.get_my_commands()
+async def cmd_help(msg: Message, src: Bot) -> None:
+  commands = await src.get_my_commands()
   help_text = "<b>Доступные команды:</b>\n\n"
 
   for cmd in commands:

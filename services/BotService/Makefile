@@ -1,7 +1,7 @@
 .PHONY: help install dev check format lint type-check run clean test
 
 help:
-	@echo "Git Telegram Bot - Makefile команды"
+	@echo "Git Telegram src - Makefile команды"
 	@echo ""
 	@echo "Использование:"
 	@echo "  make install      - Установить зависимости"
@@ -39,11 +39,11 @@ lint:
 
 type-check:
 	@echo "Проверка типов..."
-	uv run mypy bot/
+	uv run mypy src/
 
 run: check
 	@echo "Запуск бота..."
-	uv run python -m bot
+	uv run python -m src
 
 clean:
 	@echo "Очистка кэша и временных файлов..."
