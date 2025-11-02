@@ -1,4 +1,4 @@
-package com.authservice;
+package com.authservice.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
