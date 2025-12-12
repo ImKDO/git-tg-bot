@@ -12,6 +12,7 @@ dependencies = [
     "dotenv>=0.9.9",
     "fastapi>=0.120.0",
     "kafka-python>=2.2.15",
+    "pandas>=2.3.3",
     "pydantic>=2.11.10",
     "pydantic-settings>=2.11.0",
     "redis>=7.0.0",
