@@ -4,12 +4,16 @@ import com.authservice.auth.GithubAuth;
 import com.authservice.dto.TaskUserToken;
 import java.io.IOException;
 
-import com.authservice.webhook.Issue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.listener.CommonErrorHandler;
+import org.springframework.kafka.listener.DefaultErrorHandler;
+import org.springframework.kafka.support.serializer.DeserializationException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.backoff.FixedBackOff;
 
 @Service
 public class ConsumerService {
@@ -17,9 +21,8 @@ public class ConsumerService {
     private static final Logger log = LoggerFactory.getLogger(
         ConsumerService.class
     );
-    private GithubAuth githubAuth = new GithubAuth();
+    private final GithubAuth githubAuth;
 
-    @Autowired
     public ConsumerService(GithubAuth githubAuth) {
         this.githubAuth = githubAuth;
     }
@@ -36,11 +39,14 @@ public class ConsumerService {
 
             log.info("\n---\nЮзер: {} \nТокен:{}\n---\n", chatId, token);
 
-            Issue issue =  new Issue();
-            issue.handlerGetIssue(token, "akjsdadq");
         } catch (Exception ex ){
             log.error("Ошибка: {}", ex.getMessage());
         }
-
+    }
+    @Bean
+    public CommonErrorHandler errorHandler() {
+        DefaultErrorHandler handler = new DefaultErrorHandler(new FixedBackOff(0L, 0));
+        handler.addNotRetryableExceptions(DeserializationException.class);
+        return handler;
     }
 }

@@ -36,7 +36,7 @@ dependencies {
 
 	// --- DevTools ---
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	implementation 'org.kohsuke:github-api:1.327'
+
 
 	// --- Тестирование ---
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
