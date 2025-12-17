@@ -10,4 +10,5 @@ public class TaskUserToken {
     @JsonProperty("chat_id")
     private String chatId;
     private String token;
+    private String linkIssue;
 }

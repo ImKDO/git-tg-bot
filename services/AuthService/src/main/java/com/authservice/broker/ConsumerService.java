@@ -3,6 +3,8 @@ package com.authservice.broker;
 import com.authservice.auth.GithubAuth;
 import com.authservice.dto.TaskUserToken;
 import java.io.IOException;
+
+import com.authservice.webhook.Issue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +26,21 @@ public class ConsumerService {
 
     @KafkaListener(topics = "task_user_token", groupId = "auth-service")
     public void listenUserTokenTasks(TaskUserToken task) throws IOException {
-        log.info("\nПолучены данные: {}\n", task);
+        try{
+            log.info("\nПолучены данные: {}\n", task);
 
-        String chatId = task.getChatId();
-        String token = task.getToken();
+            String chatId = task.getChatId();
+            String token = task.getToken();
 
-        githubAuth.handlerGithub(task);
+            githubAuth.handlerGithub(task);
 
-        log.info("\n---\nЮзер: {} \nТокен:{}\n---\n", chatId, token);
+            log.info("\n---\nЮзер: {} \nТокен:{}\n---\n", chatId, token);
+
+            Issue issue =  new Issue();
+            issue.handlerGetIssue(token, "akjsdadq");
+        } catch (Exception ex ){
+            log.error("Ошибка: {}", ex.getMessage());
+        }
+
     }
 }
