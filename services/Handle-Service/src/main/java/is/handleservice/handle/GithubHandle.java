@@ -1,29 +1,23 @@
-package com.authservice.auth;
+package is.handleservice.handle;
 
-import com.authservice.dto.TaskUserToken;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import is.handleservice.dto.TaskUserToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.*;
-import org.springframework.kafka.listener.CommonErrorHandler;
-import org.springframework.kafka.listener.DefaultErrorHandler;
-import org.springframework.kafka.support.serializer.DeserializationException;
 import org.springframework.stereotype.Service;
-import org.springframework.util.backoff.FixedBackOff;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 
 
 @Service
-public class GithubAuth {
+public class GithubHandle {
 
-    private final Logger logger = LoggerFactory.getLogger(GithubAuth.class);
+    private final Logger logger = LoggerFactory.getLogger(GithubHandle.class);
     private final RestTemplate restTemplate;
 
-    public GithubAuth(RestTemplateBuilder restTemplateBuilder) {
+    public GithubHandle(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
 

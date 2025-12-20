@@ -1,6 +1,5 @@
-package com.authservice.dto;
+package is.handleservice.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.ToString;
 

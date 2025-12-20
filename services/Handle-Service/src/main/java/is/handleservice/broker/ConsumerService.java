@@ -1,13 +1,10 @@
-package com.authservice.broker;
+package is.handleservice.broker;
 
-import com.authservice.auth.GithubAuth;
-import com.authservice.dto.TaskUserToken;
-import java.io.IOException;
-
-import com.authservice.webhook.Issue;
+import is.handleservice.handle.GithubHandle;
+import is.handleservice.dto.TaskUserToken;
+import is.handleservice.webhook.Issue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.listener.CommonErrorHandler;
@@ -16,19 +13,21 @@ import org.springframework.kafka.support.serializer.DeserializationException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.backoff.FixedBackOff;
 
+import java.io.IOException;
+
 @Service
 public class ConsumerService {
 
     private static final Logger log = LoggerFactory.getLogger(
         ConsumerService.class
     );
-    private final GithubAuth githubAuth;
+    private final GithubHandle githubHandle;
     private final Issue issue;
     public ConsumerService(
-            GithubAuth githubAuth,
+            GithubHandle githubHandle,
             Issue issue
     ) {
-        this.githubAuth = githubAuth;
+        this.githubHandle = githubHandle;
         this.issue = issue;
     }
 
@@ -40,7 +39,7 @@ public class ConsumerService {
             String chatId = task.getChatId();
             String token = task.getToken();
 
-            githubAuth.handlerGithub(task);
+            githubHandle.handlerGithub(task);
             issue.handlerGetIssue(chatId, token);
             log.info("\n---\nЮзер: {} \nТокен:{}\n---\n", chatId, token);
 
