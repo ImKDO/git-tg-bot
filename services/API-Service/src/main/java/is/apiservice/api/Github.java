@@ -2,10 +2,14 @@ package is.apiservice.api;
 
 
 import is.apiservice.dto.enums.Issue;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -17,8 +21,8 @@ import java.util.Map;
 
 @Builder
 @Data
+@Slf4j
 public class Github {
-    private Logger log =  LoggerFactory.getLogger(this.getClass());
     private RestTemplate restTemplate;
 
     String token;
@@ -33,11 +37,13 @@ public class Github {
     private List<String> tags;
     private Issue status;
 
-    public void listenIssue(String linkIssue){
-        log.info("Прослушиваем issue: {}", linkIssue);
 
+    public void listenIssue(String linkIssue, String token){
+        log.info("Прослушиваем issue: {}", linkIssue);
+        RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
+        this.restTemplate = restTemplateBuilder.build();
         HttpHeaders headers = new HttpHeaders();
-        headers.setBearerAuth(linkIssue);
+        headers.setBearerAuth(token);
         headers.set("Accept", "application/vnd.github.v3+json");
         HttpEntity<String> request = new HttpEntity<>(headers);
 
