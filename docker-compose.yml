@@ -139,12 +139,12 @@ services:
       - backend
 
   db-service:
-    build: ./services/DB-Service
+    build: services/CoreService
     container_name: db-service
     restart: unless-stopped
     env_file:
       - ${COMPOSE_ENV_FILE:-.env}
-      - ./services/DB-Service/.env
+      - services/CoreService/.env
     environment:
       KAFKA_BOOTSTRAP_SERVERS: kafka:29092
     depends_on:
