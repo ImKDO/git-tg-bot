@@ -18,3 +18,6 @@ async def variants_auth():
       )
     )
   return keyboard.adjust(2).as_markup()
+
+async def tracking():
+  keyboard = InlineKeyboardBuilder()

@@ -10,7 +10,7 @@ router = Router(name="start")
 @router.message(CommandStart())
 async def cmd_start(msg: Message) -> None:
     await msg.answer(
-        f"Привет, {html.bold(msg.from_user.full_name)}!\n\nЯ бот для работы с Git репозиториями."
+        f"Привет, {html.bold(msg.from_user.full_name)}!\n\nЯ бот для работы с получения нотификаций с разных сервисов!"
     )
 
 

@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '2.2.20'
     id 'org.springframework.boot' version '3.1.5'
     id 'io.spring.dependency-management' version '1.1.6'
+    id 'org.jetbrains.kotlin.jvm'
+    id "org.jetbrains.kotlin.plugin.spring" version '2.2.20'
 }
 
 group = 'boysband.linktracker'
@@ -39,6 +41,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
 
     // --- Lombok ---
@@ -47,11 +50,16 @@ dependencies {
 
     // --- DevTools ---
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+
+
 
 
     // --- Тестирование ---
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
 }
 
 tasks.named('test') {

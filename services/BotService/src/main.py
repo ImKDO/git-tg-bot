@@ -5,11 +5,11 @@ import sys
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
+from aiogram.types import BotCommand
 
 from src.common.kafka import get_producer
 from src.config import settings
 from src.handlers import start, add
-from src.handlers.commands import COMMANDS
 
 
 logging.basicConfig(
@@ -18,6 +18,16 @@ logging.basicConfig(
     stream=sys.stdout,
 )
 logger = logging.getLogger(__name__)
+
+COMMANDS = [
+    BotCommand(command="start", description="Начать работу с ботом"),
+    BotCommand(command="help", description="Получить справку по командам"),
+    BotCommand(command="add", description="Добавить новый сервис"),
+    BotCommand(command="history", description="Просмотреть историю уведомлений"),
+    BotCommand(command="config_notification", description="Настройка прослушивания уведомлений"),
+    BotCommand(command="get_notification", description="Получить нотификации"),
+    BotCommand(command="config_tracking", description="Отслеживания")
+]
 
 async def main() -> None:
     bot = Bot(
