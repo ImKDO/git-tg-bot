@@ -1,5 +1,6 @@
 package core.dto
 
+import dto.core.MethodResponse
 import java.time.ZonedDateTime
 
 data class ActionResponse(

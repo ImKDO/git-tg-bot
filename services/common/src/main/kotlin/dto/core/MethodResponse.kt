@@ -1,4 +1,6 @@
-package core.dto
+package dto.core
+
+import core.dto.ServicesResponse
 
 data class MethodResponse(
     val id: Int,
