@@ -9,7 +9,7 @@ from aiogram.types import BotCommand
 
 from src.common.kafka import get_producer
 from src.config import settings
-from src.handlers import start, add
+from src.handlers import start, commands
 
 
 logging.basicConfig(
@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 COMMANDS = [
     BotCommand(command="start", description="Начать работу с ботом"),
     BotCommand(command="help", description="Получить справку по командам"),
-    BotCommand(command="add", description="Добавить новый сервис"),
+    # BotCommand(command="add", description="Добавить новый сервис"),
     BotCommand(command="history", description="Просмотреть историю уведомлений"),
     BotCommand(command="config_notification", description="Настройка прослушивания уведомлений"),
     BotCommand(command="get_notification", description="Получить нотификации"),
@@ -45,7 +45,7 @@ async def main() -> None:
     dp.shutdown.register(producer.stop)
 
     dp.include_router(start.router)
-    dp.include_router(add.router)
+    dp.include_router(commands.routerConfigTracking)
 
     await bot.set_my_commands(COMMANDS)
 
