@@ -14,7 +14,11 @@ __pycache__/
 .venv/
 .pytest_cache/
 .coverage
-
+./services/*/build/
+./services/*/gradle/
+./services/*/gradlew
+./services/*/gradlew.bat
+./services/*/docker-compose.yml
 /build/
 .gradle/
 *.class
