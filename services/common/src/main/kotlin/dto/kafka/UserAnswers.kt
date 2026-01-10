@@ -17,6 +17,8 @@ data class UserAnswers (
     val methodName: String,
     @JsonProperty("url")
     val url: String,
+    @JsonProperty("newValue")
+    val newValue: String,
 ){
     enum class EventType{
         CONSTANT, PLANNED
