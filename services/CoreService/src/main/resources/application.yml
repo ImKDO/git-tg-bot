@@ -1,0 +1,19 @@
+spring:
+  datasource:
+      url: jdbc:postgresql://localhost:5432/mydb
+      driver-class-name: org.postgresql.Driver
+      username: myuser
+      password: mypassword
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        generate_statistics: true
+        format_sql: true
+logging:
+  level:
+    org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: off
+
