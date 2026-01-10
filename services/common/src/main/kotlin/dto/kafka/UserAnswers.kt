@@ -1,6 +1,5 @@
-package dto.kafka
+package boysband.linktracker.dto.kafka
 
-import netscape.javascript.JSObject
 import java.time.ZonedDateTime
 
 data class UserAnswers (

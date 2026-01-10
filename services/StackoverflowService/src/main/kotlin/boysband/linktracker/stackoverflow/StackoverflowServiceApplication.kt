@@ -1,8 +1,8 @@
-package boysband.linktracker.boysband.linktracker.stackoverflow
+package boysband.linktracker.stackoverflow
 
 import org.springframework.boot.WebApplicationType
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
+import org.springframework.boot.builder.SpringApplicationBuilder
 import java.time.ZonedDateTime
 
 
@@ -11,7 +11,7 @@ open class StackoverflowServiceApplication
 
 fun main(args: Array<String>) {
     println(ZonedDateTime.now().minusYears(20))
-    runApplication<StackoverflowServiceApplication>(*args) {
-        webApplicationType = WebApplicationType.NONE
-    }
+    SpringApplicationBuilder(StackoverflowServiceApplication::class.java)
+        .web(WebApplicationType.NONE)
+        .run(*args)
 }

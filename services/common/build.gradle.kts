@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "2.2.20"
+    `maven-publish`
 }
 
 group = "boysband.linktracker"
@@ -23,14 +24,23 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
-kotlin {
-    jvmToolchain(24)
-}
+
 java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(24))
+    }
     withSourcesJar()
     withJavadocJar()
 }
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.compilerOptions {
     freeCompilerArgs.set(listOf("-Xannotation-default-target=param-property"))
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+        }
+    }
 }

@@ -1,6 +1,6 @@
 package boysband.updateprocerssor.kafka
 
-import dto.kafka.UserAnswers
+import boysband.linktracker.dto.kafka.UserAnswers
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.kafka.core.KafkaTemplate

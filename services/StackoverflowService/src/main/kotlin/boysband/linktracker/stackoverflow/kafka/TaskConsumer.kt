@@ -1,7 +1,7 @@
-package boysband.linktracker.boysband.linktracker.stackoverflow.kafka
+package boysband.linktracker.stackoverflow.kafka
 
-import boysband.linktracker.boysband.linktracker.stackoverflow.ClientService
-import boysband.linktracker.boysband.linktracker.stackoverflow.ExecutorService
+import boysband.linktracker.stackoverflow.ClientService
+import boysband.linktracker.stackoverflow.ExecutorService
 import boysband.linktracker.dto.kafka.UserRequest
 import kotlinx.coroutines.runBlocking
 import org.slf4j.Logger

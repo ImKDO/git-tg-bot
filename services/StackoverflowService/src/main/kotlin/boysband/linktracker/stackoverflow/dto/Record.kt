@@ -1,4 +1,4 @@
-package boysband.linktracker.boysband.linktracker.stackoverflow.dto
+package boysband.linktracker.stackoverflow.dto
 
 import java.time.ZonedDateTime
 

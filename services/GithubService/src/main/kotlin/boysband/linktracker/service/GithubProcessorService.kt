@@ -3,8 +3,8 @@ package boysband.linktracker.service
 import boysband.linktracker.service.github.Action
 import boysband.linktracker.service.github.Commit
 import boysband.linktracker.service.github.Issue
-import dto.kafka.UserAnswers
-import dto.kafka.UserRequest
+import boysband.linktracker.dto.kafka.UserAnswers
+import boysband.linktracker.dto.kafka.UserRequest
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
@@ -50,7 +50,8 @@ class GithubProcessorService(
             type = UserAnswers.EventType.CONSTANT,
             serviceName = SERVICE_NAME,
             methodName = methodName,
-            url = request.links.firstOrNull() ?: ""
+            url = request.links.firstOrNull() ?: "",
+            newValue = null
         )
     }
 

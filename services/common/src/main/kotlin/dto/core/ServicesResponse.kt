@@ -1,4 +1,4 @@
-package core.dto
+package boysband.linktracker.dto.core
 
 data class ServicesResponse(
     val id: Int,

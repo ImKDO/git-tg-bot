@@ -1,7 +1,7 @@
-package boysband.linktracker.boysband.linktracker.stackoverflow
+package boysband.linktracker.stackoverflow
 
-import boysband.linktracker.boysband.linktracker.stackoverflow.dto.Record
-import boysband.linktracker.boysband.linktracker.stackoverflow.kafka.ResultProducer
+import boysband.linktracker.stackoverflow.dto.Record
+import boysband.linktracker.stackoverflow.kafka.ResultProducer
 import boysband.linktracker.dto.kafka.UserRequest
 import org.springframework.stereotype.Service
 import java.time.ZonedDateTime

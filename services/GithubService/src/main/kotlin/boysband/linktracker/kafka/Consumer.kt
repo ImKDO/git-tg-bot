@@ -1,7 +1,7 @@
 package boysband.linktracker.kafka
 
 import boysband.linktracker.service.GithubProcessorService
-import dto.kafka.UserRequest
+import boysband.linktracker.dto.kafka.UserRequest
 import org.slf4j.LoggerFactory
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.stereotype.Service

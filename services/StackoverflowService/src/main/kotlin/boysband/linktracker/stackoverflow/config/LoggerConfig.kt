@@ -1,4 +1,4 @@
-package boysband.linktracker.boysband.linktracker.stackoverflow.config
+package boysband.linktracker.stackoverflow.config
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

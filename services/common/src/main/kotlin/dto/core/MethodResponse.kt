@@ -1,6 +1,6 @@
-package dto.core
+package boysband.linktracker.dto.core
 
-import core.dto.ServicesResponse
+import boysband.linktracker.dto.core.ServicesResponse
 
 data class MethodResponse(
     val id: Int,

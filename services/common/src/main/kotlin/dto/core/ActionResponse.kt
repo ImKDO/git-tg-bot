@@ -1,6 +1,6 @@
-package core.dto
+package boysband.linktracker.dto.core
 
-import dto.core.MethodResponse
+import boysband.linktracker.dto.core.MethodResponse
 import java.time.ZonedDateTime
 
 data class ActionResponse(

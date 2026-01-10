@@ -1,6 +1,6 @@
 package boysband.updateprocerssor.kafka
 
-import dto.kafka.UserAnswers
+import boysband.linktracker.dto.kafka.UserAnswers
 import boysband.updateprocerssor.service.DiffService
 import boysband.updateprocerssor.service.LastValueCache
 import org.slf4j.LoggerFactory

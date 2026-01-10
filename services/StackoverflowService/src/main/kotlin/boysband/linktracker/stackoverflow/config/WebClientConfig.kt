@@ -1,4 +1,4 @@
-package boysband.linktracker.boysband.linktracker.stackoverflow.config
+package boysband.linktracker.stackoverflow.config
 
 import io.netty.channel.ChannelOption
 import io.netty.handler.timeout.ReadTimeoutHandler

@@ -1,4 +1,4 @@
-package boysband.linktracker.boysband.linktracker.stackoverflow.config
+package boysband.linktracker.stackoverflow.config
 
 import boysband.linktracker.dto.kafka.UserRequest
 import org.apache.kafka.clients.consumer.ConsumerConfig
@@ -22,7 +22,7 @@ open class KafkaConfig {
     @Bean
     open fun consumerFactory(): ConsumerFactory<String, UserRequest> {
         val props = mapOf(
-            ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to "localhost:29092",
+            ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to "localhost:9092",
             ConsumerConfig.GROUP_ID_CONFIG to "my-group",
             ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class.java,
             ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to JsonDeserializer::class.java
@@ -59,7 +59,7 @@ open class KafkaConfig {
     @Bean
     open fun kafkaListenerContainerFactory(): ConcurrentKafkaListenerContainerFactory<String, UserRequest> {
         val factory = ConcurrentKafkaListenerContainerFactory<String, UserRequest>()
-        factory.consumerFactory = consumerFactory()
+        factory.setConsumerFactory(consumerFactory())
         return factory
     }
 

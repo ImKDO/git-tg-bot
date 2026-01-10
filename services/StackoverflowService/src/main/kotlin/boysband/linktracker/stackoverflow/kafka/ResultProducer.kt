@@ -1,8 +1,8 @@
-package boysband.linktracker.boysband.linktracker.stackoverflow.kafka
+package boysband.linktracker.stackoverflow.kafka
 
-import boysband.linktracker.boysband.linktracker.stackoverflow.dto.Record
+import boysband.linktracker.stackoverflow.dto.Record
+import boysband.linktracker.dto.kafka.UserAnswers
 import boysband.linktracker.dto.kafka.UserRequest
-import dto.kafka.UserAnswers
 import org.slf4j.Logger
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Service

@@ -1,6 +1,6 @@
 package boysband.updateprocerssor.service
 
-import dto.kafka.UserAnswers
+import boysband.linktracker.dto.kafka.UserAnswers
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.time.Instant
@@ -46,7 +46,7 @@ class DiffService {
                     }
                 }
                 else -> {
-                    logger.warn("Unexpected item type ${item?.javaClass?.simpleName} for chatId=${answers.chatId}")
+                    logger.warn("Unexpected item type ${item?.let { it::class.java.simpleName }} for chatId=${answers.chatId}")
                     true
                 }
             }

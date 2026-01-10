@@ -1,6 +1,6 @@
-package boysband.linktracker.boysband.linktracker.stackoverflow
+package boysband.linktracker.stackoverflow
 
-import boysband.linktracker.boysband.linktracker.stackoverflow.dto.Record
+import boysband.linktracker.stackoverflow.dto.Record
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.http.HttpMethod
 import org.springframework.stereotype.Service
