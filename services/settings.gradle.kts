@@ -1,4 +1,6 @@
-rootProject.name = 'services'
+rootProject.name = "git-tg-bot"
 
-include(':common')
-include(':GithubService')
+include(
+    "common",
+    "StackoverflowService"
+)

@@ -1,5 +1,7 @@
 package boysband.linktracker.dto.kafka
 
+import java.time.ZonedDateTime
+
 
 data class UserRequest (
     val chatId: Long,
@@ -10,4 +12,3 @@ data class UserRequest (
     val lastValue: String?,
     val byScheduler: Boolean = true,
 )
-
