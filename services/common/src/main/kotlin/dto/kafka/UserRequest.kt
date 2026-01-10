@@ -1,4 +1,4 @@
-package dto.kafka
+package boysband.linktracker.dto.kafka
 
 import java.time.ZonedDateTime
 
@@ -9,6 +9,6 @@ data class UserRequest (
     val token: String? = null,
     val action: String = "",
     val links: List<String> = emptyList(),
-    val lastValue: String?
+    val lastValue: String?,
+    val byScheduler: Boolean = true,
 )
-

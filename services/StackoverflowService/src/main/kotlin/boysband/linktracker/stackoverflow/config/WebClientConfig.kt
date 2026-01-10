@@ -1,0 +1,34 @@
+package boysband.linktracker.boysband.linktracker.stackoverflow.config
+
+import io.netty.channel.ChannelOption
+import io.netty.handler.timeout.ReadTimeoutHandler
+import io.netty.handler.timeout.WriteTimeoutHandler
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+import org.springframework.http.client.reactive.ReactorClientHttpConnector
+import org.springframework.web.reactive.function.client.WebClient
+import reactor.netty.http.client.HttpClient
+import kotlin.time.Duration.Companion.seconds
+import kotlin.time.toJavaDuration
+
+@Configuration
+open class WebClientConfig {
+
+    @Bean
+    open fun webClient() : WebClient {
+        val httpClient = HttpClient.create().apply {
+            option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
+            responseTimeout(10.seconds.toJavaDuration())
+            doOnConnected { connection ->
+                connection.addHandlerLast(ReadTimeoutHandler(10))
+                connection.addHandlerLast(WriteTimeoutHandler(10))
+            }
+        }
+
+        return WebClient.builder()
+            .baseUrl("https://api.stackexchange.com/2.3/questions")
+            .clientConnector(ReactorClientHttpConnector(httpClient))
+            .codecs { it.defaultCodecs().maxInMemorySize(2 * 1024 * 1024) }
+            .build()
+    }
+}
